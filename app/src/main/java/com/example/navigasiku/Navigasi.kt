@@ -5,20 +5,21 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.navigasiku.view.FormIsian
 import com.example.navigasiku.view.TampilData
 
-enum class Navigasi{
+enum class Navigasi {
     Formulirku,
     Detail
 }
 
 @Composable
 fun DataApp(
-    navController: NavController = rememberNavController(),
+    navController: NavHostController = rememberNavController(),
     modifier: Modifier
 ){
     Scaffold { isiRuang->
@@ -46,9 +47,8 @@ fun DataApp(
 }
 
 private fun cancelAndBackToFormulirku(
-    navController: NavController
-){
-    navController.popBackStack(route = Navigasi.Formulirku.name,
+    navController: NavHostController
+) {
+    navController.popBackStack(Navigasi.Formulirku.name,
         inclusive = false)
 }
-
